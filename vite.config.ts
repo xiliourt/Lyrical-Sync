@@ -7,10 +7,9 @@ import { parseBuffer } from 'music-metadata';
 // --- Configuration ---
 const SEARCH_DIR = 'public';
 const PLAYLIST_OUTPUT_FILE = 'src/playlist.ts';
-const TYPES_IMPORT_PATH = './types';
+const TYPES_IMPORT_PATH = 'src/types';
 
 // --- Helpers ---
-
 const escapeHtml = (unsafe: string) => {
   return unsafe
     .replace(/&/g, "&amp;")
@@ -101,7 +100,6 @@ function staticSiteGenerator() {
 
         for (const fileName of files) {
           try {
-            // Read file buffer directly to avoid path parsing issues with libraries
             const filePath = path.join(folderPath, fileName);
             const buffer = fs.readFileSync(filePath);
             const metadata = await parseBuffer(buffer, 'audio/mpeg');
@@ -127,7 +125,6 @@ function staticSiteGenerator() {
               id: trackId, 
               title: trackTitle,
               trackNumber: trackNo,
-              // Audio/LRC src must still point to the actual filename (encoded)
               audioSrc: `/${encodedFolder}/${encodePath(fileName)}`,
               lrcSrc: `/${encodedFolder}/${encodePath(fileNameNoExt + '.lrc')}`
             });
