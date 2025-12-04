@@ -138,7 +138,7 @@ export const useLyrical = () => {
         } else if (selectedAlbum) {
             document.title = selectedAlbum.title;
         } else {
-            document.title = "Lyrical Player";
+            document.title = import.meta.env.VITE_SITE_NAME || "Lyrical Player";
         }
     }, [playingAlbum, currentTrackIndex, selectedAlbum]);
 
