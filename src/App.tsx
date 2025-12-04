@@ -67,10 +67,10 @@ export default function App() {
                     <div className="z-10 w-full max-w-6xl animate-in fade-in zoom-in duration-700 my-4 md:my-8 flex flex-col items-center">
                         <div className="mb-10 text-center">
                             <h1 className="text-4xl md:text-7xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-sky-300 mb-4">
-                                {import.meta.env.VITE_SITE_NAME}
+                                {import.meta.env.VITE_SITE_NAME? import.meta.env.VITE_SITE_NAME : "Lyrical Player"}
                             </h1>
                             <p className="text-lg md:text-xl text-gray-400 font-light tracking-wide">
-                                {import.meta.env.VITE_SITE_DESCRIPTION}
+                                {import.meta.env.VITE_SITE_DESCRIPTION? import.meta.env.VITE_SITE_DESCRIPTION : " Play your collection of tracks synced with lrc files in a neat, web based format." }
                             </p>
                         </div>
 
