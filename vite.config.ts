@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import path from 'path';
 import fs from 'fs';
@@ -196,12 +196,32 @@ function staticSiteGenerator() {
   };
 }
 
-export default defineConfig({
-  plugins: [
-    react(),
-    staticSiteGenerator()
-  ],
-  build: {
-    target: 'esnext'
-  }
+// Set basepage metadata and title from variables
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '');
+  const SITE_NAME = env.VITE_SITE_NAME || 'Lyrical Player';
+  const SITE_DESC = env.VITE_SITE_DESC || 'Play your collection of tracks synced with lrc files in a neat, web based format.';
+
+  return {
+    plugins: [
+      react(),
+      {
+        name: 'html-transform',
+        transformIndexHtml(html) {
+          let newHtml = html;
+          newHtml = newHtml.replace(/<title>.*?<\/title>/i, `<title>${escapeHtml(SITE_NAME)}</title>`);
+          newHtml = replaceMeta(newHtml, 'name', 'description', SITE_DESC);
+          newHtml = replaceMeta(newHtml, 'property', 'og:title', SITE_NAME);
+          newHtml = replaceMeta(newHtml, 'property', 'og:description', SITE_DESC);
+          newHtml = replaceMeta(newHtml, 'property', 'twitter:title', SITE_NAME);
+          newHtml = replaceMeta(newHtml, 'property', 'twitter:description', SITE_DESC);
+          return newHtml;
+        }
+      },
+      staticSiteGenerator()
+    ],
+    build: {
+      target: 'esnext'
+    }
+  };
 });
