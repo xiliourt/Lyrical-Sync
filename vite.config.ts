@@ -90,9 +90,11 @@ function staticSiteGenerator() {
         // Helper for audio src links (keep strict encoding for file access)
         const encodePath = (str: string) => encodeURIComponent(str);
         
-        // Cover path uses the encoded folder name
-        const coverSrc = fs.existsSync(path.join(folderPath, 'Cover.png')) 
-          ? `/${encodePath(folderName)}/Cover.png` 
+        // Cover path, either webp (if present) or png
+        const coverSrc = fs.existsSync(path.join(folderPath, 'Cover.webp')) 
+          ? `/${encodePath(folderName)}/Cover.webp` 
+          :  fs.existsSync(path.join(folderPath, 'Cover.png')) 
+          ? `/${encodePath(folderName)}/Cover.png`
           : '';
 
         const tracks: any[] = [];
