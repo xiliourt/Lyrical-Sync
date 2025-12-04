@@ -70,7 +70,7 @@ export default function App() {
                                 {import.meta.env.VITE_SITE_NAME || "Lyrical Player"}
                             </h1>
                             <p className="text-lg md:text-xl text-gray-400 font-light tracking-wide">
-                                {import.meta.env.VITE_SITE_NAME || "Play your collection of tracks synced with lrc files in a neat, web based format." }
+                                {import.meta.env.VITE_SITE_DESC || "Play your collection of tracks synced with lrc files in a neat, web based format." }
                             </p>
                         </div>
 
