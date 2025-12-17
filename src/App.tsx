@@ -89,7 +89,7 @@ export default function App() {
                                 />
                             )}
                         </div>
-                        <Footer />
+                        <Footer git="https://github.com/xiliourt/Lyrical-Sync" />
                     </div>
 
                     {!isPlayerExpanded && isPlayerReady && files.audioFileName && (
