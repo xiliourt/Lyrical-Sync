@@ -83,7 +83,7 @@ export const PlayerView: React.FC<PlayerViewProps> = ({
                             src={files.coverUrl || DEFAULT_COVER}
                             alt="Album Cover"
                             onError={handleImageError}
-                            className={`w-full h-full object-cover transition-transform duration-[20s] ease-linear ${isPlaying ? 'scale-110' : 'scale-100'}`}
+                            className={`object-cover`}
                         />
                         <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-50 pointer-events-none" />
                     </div>
