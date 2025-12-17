@@ -91,9 +91,11 @@ function staticSiteGenerator() {
         
         // Cover path, either webp (if present) or png
         const coverSrc = fs.existsSync(path.join(folderPath, 'Cover.webp')) 
-          ? `/${encodePath(folderName)}/Cover.webp` 
-          :  fs.existsSync(path.join(folderPath, 'Cover.png')) 
-          ? `/${encodePath(folderName)}/Cover.png`
+          ? `/${encodePath(folderName)}/Cover.webp` :
+          fs.existsSync(path.join(folderPath, 'Cover.png')) 
+          ? `/${encodePath(folderName)}/Cover.png` :
+          fs.existsSync(path.join(folderPath, 'Cover.jpeg')) 
+          ? `/${encodePath(folderName)}/Cover.jpeg`
           : '';
 
         const tracks: any[] = [];
