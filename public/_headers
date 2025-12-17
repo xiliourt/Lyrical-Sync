@@ -1,0 +1,4 @@
+/*.mp3
+  Accept-Ranges: bytes
+  Cache-Control: public, max-age=604800, immutable, no-transform
+  X-Content-Type-Options: nosniff
