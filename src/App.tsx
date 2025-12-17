@@ -5,7 +5,7 @@ import { LibraryView } from './views/LibraryView';
 import { AlbumView } from './views/AlbumView';
 import { PlayerView } from './views/PlayerView';
 import { MiniPlayer } from './components/MiniPlayer';
-import { Footer } from './components/Footer';
+import Footer from './components/Footer';
 
 export default function App() {
     const {
